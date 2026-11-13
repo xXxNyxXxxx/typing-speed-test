@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="test-wrapper">
+    <!-- Settings Bar: Time & Difficulty Toggles -->
+    <div class="settings-bar">
+        <div class="toggle-group" id="time-toggles">
+            <span class="toggle-label">Time:</span>
+            <button class="pill active" data-time="15">15s</button>
+            <button class="pill" data-time="30">30s</button>
+            <button class="pill" data-time="60">60s</button>
+        </div>
+        <div class="toggle-group" id="difficulty-toggles">
+            <span class="toggle-label">Mode:</span>
+            <button class="pill" data-difficulty="easy">Easy</button>
+            <button class="pill active" data-difficulty="medium">Medium</button>
+            <button class="pill" data-difficulty="hard">Hard</button>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat-card">
+            <span class="stat-label">Time Left</span>
+            <span class="stat-value accent" id="timer">60s</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">WPM</span>
+            <span class="stat-value" id="wpm">0</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Accuracy</span>
+            <span class="stat-value" id="accuracy">100%</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Personal Best</span>
+            <span class="stat-value pb" id="high-score">0 WPM</span>
+        </div>
+    </div>
+
+    <div class="typing-box" id="typing-box" tabindex="0">
+        <div class="word-display" id="word-display">Loading words...</div>
+        <input
+            type="text"
+            id="hidden-input"
+            class="hidden-input"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            aria-label="Typing input"
+        >
+    </div>
+
+    <div class="controls">
+        <button id="restart-btn" class="btn-primary" type="button">
+            Restart Test
+        </button>
+    </div>
+
+    <!-- Collapsible Pro-Tips Accordion -->
+    <details class="tips-accordion">
+        <summary>💡 Pro-Tips to Boost Your WPM</summary>
+        <ul>
+            <li><strong>Touch Type:</strong> Keep your fingers anchored on the home row (ASDF JKL;) and rely on muscle memory rather than looking down.</li>
+            <li><strong>Accuracy > Raw Speed:</strong> Slow down slightly. Backspacing to fix errors wastes more time than typing steadily and accurately.</li>
+            <li><strong>Look Ahead:</strong> Train your eyes to read 2 to 3 words ahead of the word you are currently typing to maintain a continuous flow.</li>
+        </ul>
+    </details>
+    
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% endblock %}
